@@ -1,7 +1,18 @@
 background{
     background-color: white;
 }
-/* Геометрическая фигура, производим над ней преобразования */
+@keyframes skewHexagonAnimation{
+    from{
+        transform: skew(0deg, 0deg);
+    }
+    50%{
+        transform: skew(0deg, 30deg);
+    }
+    to{
+        transform: skew(0deg, 0deg);
+    }
+}
+/* Геометрическая фигура для демонстрации преобразования */
 div{
     width: 100px;
     height: 100px;
@@ -24,12 +35,39 @@ div::after{
     border-right: 50px solid transparent;
     border-top: 25px solid #3e92cc;
 }
+/* Собственно, это преобразование */
 .skewed{   
-    transition: transform 1s ease;
+    transition: transform 0.5s ease-in-out;
 }
-/* При наведении курсором на шестиугольник, наклон */
 .skewed:hover{
     transform: skew(0deg, 30deg);
+}
+/* Шестиугольник для демонстрации анимации */
+.hexagon{
+    width: 100px;
+    height: 100px;
+    position: relative;
+    background: #ff0000;
+
+    animation-name: skewHexagonAnimation;
+    animation-duration: 1s;
+    animation-iteration-count: 5;
+}
+.hexagon::before{
+    content: '';
+    position: absolute;
+    top: -25px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-bottom: 25px solid #ff0000;
+}
+.hexagon::after{
+    content: '';
+    position: absolute;
+    bottom: -25px;
+    border-left: 50px solid transparent;
+    border-right: 50px solid transparent;
+    border-top: 25px solid #ff0000;
 }
 /* Текст к параграфу даты рождения */
 .dateText{
