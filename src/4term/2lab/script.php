@@ -90,7 +90,7 @@ echo "Пароль: $password<br/>";
 echo "ФИО: $fullName<br/>";
 echo "Возраст: $age лет<br/>";
 echo "Адрес: $address<br/>";
-echo "Сохранены в файл questionaire.txt<br/>";
+echo "Сохранены в файл $login.txt<br/>";
 
 echo "<br/>";
 echo "Загрузка изображения<br/>";
