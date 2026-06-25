@@ -1,0 +1,118 @@
+<html>
+    <head>
+        <link rel=stylesheet href="styles.css">
+        <title>3 лабораторная</title>
+        <meta charset="utf-8"/>
+    </head>
+    <body>
+        <script type = "text/javascript">
+            function Task1()
+            {
+                surname = prompt("Ваша фамилия?");
+                gender = prompt("Пол? (М/Ж)");
+                age = Number(prompt("Возраст?"));
+
+                isCorrect = confirm(`Проверьте данные:\nФамилия — ${surname}\nПол — ${gender}\nВозраст — ${age}\n\nДанные верны?`);
+                if (isCorrect)
+                {
+                    alert("Молодец, " + surname);
+                }
+                else
+                {
+                    alert("Ошибка в данных!");
+                }
+            }
+
+            function Task2()
+            {
+                x = Number(prompt("Первое число (x): "));
+                y = Number(prompt("Второе число (y): "));
+                operation = prompt("Арифметическая операция (+, -, *, /): ");
+
+                result = 0;
+
+                if (operation == "+")
+                {
+                    result = x + y;
+                    alert(`${x} + ${y} = ${result}`);
+                }
+                if (operation == "-")
+                {
+                    result = x - y;
+                    alert(`${x} - ${y} = ${result}`);
+                }
+                if (operation == "*")
+                {
+                    result = x * y;
+                    alert(`${x} * ${y} = ${result}`);
+                }
+                if (operation == "/")
+                {
+                    if (y == 0)
+                    {
+                        alert("На ноль делить нельзя!");
+                        return;
+                    }
+                    result = x / y;
+                    alert(`${x} / ${y} = ${result}`);
+                }
+            }
+
+            function Task3()
+            {
+                let n = 10;
+                let s;
+                let html = "";
+
+                html += "<p>Шаблон 1:</p>";
+                html += "<table>";
+                html += "<tbody>";
+                for (let i = 1; i <= n; i++)
+                {
+                    html += "<tr>";
+                    for (let j = 1; j <= n; j++)
+                    {
+                        if (i + j < n)
+                            s = '1';
+                        else
+                            s = '2';
+                        html += "<td class='r" + s + "'></td>";
+                    }
+                    html += "</tr>";
+                }
+                html += "</tbody>";
+                html += "</table>";
+
+                html += "<p>Шаблон 2:</p>";
+                html += "<table>";
+                html += "<tbody>";
+                for (let i = 1; i <= n; i++)
+                {
+                    html += "<tr>";
+                    for (let j = 1; j <= n; j++)
+                    {
+                        if ((i + j) % 4 == 0)
+                            s = '4';
+                        else
+                            s = '3';
+                        html += "<td class='r" + s + "'></td>";
+                    }
+                    html += "</tr>";
+                }
+                html += "</tbody>";
+                html += "</table>";
+
+                document.getElementById('task3-output').innerHTML = html;
+            }
+        </script>
+
+        <h1>Петров Алексей Станиславович, 574-1, 2 вариант</h1>
+        <h2>1 задание</h2>
+        <input type="button" value="№ 1" onClick="Task1()"/>
+        <h2>2 задание</h2>
+        <input type="button" value="№ 2" onClick="Task2()"/>
+        <h2>3 задание</h2>
+        <input type="button" value="№ 3" onClick="Task3()"/>
+        <div id = "task3-output"></div>
+    </body>
+</html>
