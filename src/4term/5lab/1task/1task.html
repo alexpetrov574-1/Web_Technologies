@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Портреты художников</title>
+    <style>
+      body {
+        background-color: #f0f8ff;
+        font-family: Arial, sans-serif;
+        padding: 20px;
+      }
+      h1 {
+        color: #2c3e50;
+      }
+      .form-row {
+        margin: 15px 0;
+      }
+      label {
+        display: inline-block;
+        width: 150px;
+        font-weight: bold;
+      }
+      select,
+      input[type="text"] {
+        padding: 5px;
+        font-size: 14px;
+      }
+      button {
+        padding: 10px 20px;
+        margin-top: 15px;
+        cursor: pointer;
+        background-color: #3498db;
+        color: white;
+        border: none;
+        font-size: 16px;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+    <script type="text/javascript">
+      function showPortraits() {
+        // Получаем выбранные элементы
+        let p1 = document.getElementById("k1");
+        let p2 = document.getElementById("k2");
+        let p3 = document.getElementById("k3");
+        let p4 = document.getElementById("k4");
+        let p5 = document.getElementById("k5");
+
+        // Формируем постоянную часть нового документа
+        let st1 = "<!DOCTYPE html><html><head><title>Портреты</title>";
+        st1 += "<style>body{background:#fff;padding:20px;} h2{color:#2c3e50;} ";
+        st1 +=
+          "img{width:300px;height:400px;margin:10px;border:3px solid #3498db;} </style></head><body>";
+
+        let st2 = "";
+
+        // Формируем переменную часть в зависимости от выбора
+        if (p1.selected) {
+          st2 +=
+            "<h2>Шишкин Иван Иванович</h2><img src='Шишкин.jpg' alt='Шишкин Иван Иванович'><br>";
+        }
+        if (p2.selected) {
+          st2 +=
+            "<h2>Иван Айвазовский</h2><img src='Айвазовский.jpg' alt='Иван Айвазовский'><br>";
+        }
+        if (p3.selected) {
+          st2 +=
+            "<h2>Клод Моне</h2><img src='Клод Моне.jpg' alt='Клод Моне'><br>";
+        }
+        if (p4.selected) {
+          st2 +=
+            "<h2>Микеланджело Буонарроти</h2><img src='Микеланджело.jpg' alt='Микеланджело Буонарроти'><br>";
+        }
+        if (p5.selected) {
+          st2 +=
+            "<h2>Леонардо да Винчи</h2><img src='Леонардо да Винчи.jpg' alt='Леонардо да Винчи'><br>";
+        }
+
+        let st3 = "</body></html>";
+
+        // Открываем новое окно
+        let win = window.open("", "", "width=600,height=700");
+        win.document.open();
+        win.document.write(st1 + st2 + st3);
+        win.document.close();
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Выберите художников для просмотра портретов</h1>
+    <form>
+      <div class="form-row">
+        <label>Выберите художников:</label>
+        <select size="5" multiple id="artistList">
+          <option id="k1">Шишкин Иван Иванович</option>
+          <option id="k2">Иван Айвазовский</option>
+          <option id="k3">Клод Моне</option>
+          <option id="k4">Микеланджело Буонарроти</option>
+          <option id="k5">Леонардо да Винчи</option>
+        </select>
+      </div>
+      <button type="button" onclick="showPortraits()">Показать</button>
+    </form>
+  </body>
+</html>
