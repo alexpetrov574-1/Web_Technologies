@@ -1,0 +1,107 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Показать/Спрятать картинки</title>
+    <style>
+      body {
+        background-color: #191970;
+        font-family: Arial, sans-serif;
+        padding: 10px;
+        color: white;
+      }
+      h1 {
+        color: white;
+        text-align: center;
+      }
+      table {
+        margin: 10px auto;
+        border-collapse: separate;
+        border-spacing: 20px;
+      }
+      td {
+        text-align: center;
+        vertical-align: middle;
+      }
+      .image-container {
+        width: 200px;
+        height: 200px;
+        margin-left: 80px;
+        margin-right: 80px;
+        margin-bottom: 130px;
+      }
+      #img1 {
+        width: 200px;
+        height: 200px;
+        border: 50px outset #ffa089;
+        padding: 5px;
+      }
+      #img2 {
+        width: 200px;
+        height: 200px;
+        border: 50px outset #89ffa0;
+        padding: 5px;
+      }
+      button {
+        padding: 10px 20px;
+        font-size: 14px;
+        cursor: pointer;
+        background-color: #3498db;
+        color: white;
+        border: none;
+      }
+      button:hover {
+        background-color: #2980b9;
+      }
+    </style>
+    <script type="text/javascript">
+      function toggleImage(imgNum) {
+        let img = document.getElementById("img" + imgNum);
+        let btn = document.getElementById("btn" + imgNum);
+
+        if (img.style.display === "none") {
+          img.style.display = "block";
+          btn.innerHTML = "Спрячь меня";
+          btn.value = "Спрячь меня";
+        } else {
+          img.style.display = "none";
+          btn.innerHTML = "Покажи меня";
+          btn.value = "Покажи меня";
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <h1>Управление видимостью картинок</h1>
+    <table>
+      <tr>
+        <td>
+          <div class="image-container">
+            <img id="img1" src="кот.jpg" alt="Картинка 1" />
+          </div>
+          <form>
+            <input
+              type="button"
+              id="btn1"
+              value="Спрячь меня"
+              onclick="toggleImage(1)"
+            />
+          </form>
+        </td>
+        <td>
+          <div class="image-container">
+            <img id="img2" src="собака.jpg" alt="Картинка 2" />
+          </div>
+          <form>
+            <input
+              type="button"
+              id="btn2"
+              value="Спрячь меня"
+              onclick="toggleImage(2)"
+            />
+          </form>
+        </td>
+      </tr>
+    </table>
+  </body>
+</html>
