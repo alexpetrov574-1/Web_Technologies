@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>3 лабораторная</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+        h1 { color: #333; }
+        .student-info {
+            background: #f0f0f0;
+            padding: 15px;
+            margin: 20px 0;
+            border-left: 4px solid #007bff;
+        }
+        .task-buttons {
+            margin: 20px 0;
+        }
+        .task-buttons button {
+            padding: 10px 20px;
+            margin: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            background: #007bff;
+            color: white;
+            border: none;
+            border-radius: 4px;
+        }
+        .task-buttons button:hover {
+            background: #0056b3;
+        }
+        .task {
+            display: none;
+            margin: 20px 0;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .task.active {
+            display: block;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px 0;
+            width: 100%;
+            max-width: 300px;
+        }
+        button.task-btn {
+            padding: 8px 16px;
+            margin: 10px 0;
+            background: #28a745;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        button.task-btn:hover {
+            background: #218838;
+        }
+        .result {
+            margin-top: 15px;
+            padding: 10px;
+            background: #e9ecef;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>3 лабораторная</h1>
+    
+    <div class="student-info">
+        <strong>Петров Алексей Станиславович, 574-1, 2 вариант</strong>
+    </div>
+
+    <div class="task-buttons">
+        <button onclick="showTask('task1')">1 задание</button>
+        <button onclick="showTask('task2')">2 задание</button>
+        <button onclick="showTask('task3')">3 задание</button>
+        <button onclick="showTask('task4')">4 задание</button>
+    </div>
+
+    <!-- ЗАДАНИЕ 1 -->
+    <div id="task1" class="task active">
+        <h2>Задание 1. День рождения</h2>
+        <p>Введите дату рождения:</p>
+        <input type="date" id="birthDate">
+        <br>
+        <button class="task-btn" onclick="task1()">Показать</button>
+        <div id="result1" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- ЗАДАНИЕ 2 -->
+    <div id="task2" class="task">
+        <h2>Задание 2. Дни до каникул</h2>
+        <button class="task-btn" onclick="task2()">Рассчитать</button>
+        <p>Дней до каникул: <input type="text" id="daysToVacation" readonly></p>
+    </div>
+
+    <!-- ЗАДАНИЕ 3 -->
+    <div id="task3" class="task">
+        <h2>Задание 3. Площадь прямоугольника</h2>
+        <p>Длина (см): <input type="number" id="length" min="0" step="0.01"></p>
+        <p>Ширина (см): <input type="number" id="width" min="0" step="0.01"></p>
+        <button class="task-btn" onclick="task3()">Вычислить</button>
+        <div id="result3" class="result" style="display:none;"></div>
+    </div>
+
+    <!-- ЗАДАНИЕ 4 -->
+    <div id="task4" class="task">
+        <h2>Задание 4. Анкета</h2>
+        <p>ФИО: <input type="text" id="fio"></p>
+        <p>Пол: 
+            <select id="gender">
+                <option value="мужской">Мужской</option>
+                <option value="женский">Женский</option>
+            </select>
+        </p>
+        <p>Телефон: <input type="text" id="phone"></p>
+        <p>Почта: <input type="text" id="email"></p>
+        <p>Группа крови: 
+            <select id="blood">
+                <option value="I (O)">I (O)</option>
+                <option value="II (A)">II (A)</option>
+                <option value="III (B)">III (B)</option>
+                <option value="IV (AB)">IV (AB)</option>
+            </select>
+        </p>
+        <p>Специальность: <input type="text" id="specialty"></p>
+        <button class="task-btn" onclick="task4()">Сформировать биографию</button>
+    </div>
+
+    <script>
+        function showTask(taskId) {
+            document.querySelectorAll('.task').forEach(t => t.classList.remove('active'));
+            document.getElementById(taskId).classList.add('active');
+        }
+
+        // ЗАДАНИЕ 1
+        function task1() {
+            const dateInput = document.getElementById('birthDate').value;
+            if (!dateInput) {
+                alert('Введите дату рождения');
+                return;
+            }
+
+            const months = ['января', 'февраля', 'марта', 'апреля', 'мая', 'июня',
+                           'июля', 'августа', 'сентября', 'октября', 'ноября', 'декабря'];
+            const weekdays = ['воскресенье', 'понедельник', 'вторник', 'среда',
+                             'четверг', 'пятница', 'суббота'];
+
+            const date = new Date(dateInput);
+            const day = date.getDate();
+            const month = months[date.getMonth()];
+            const year = date.getFullYear();
+            const weekday = weekdays[date.getDay()];
+
+            document.getElementById('result1').style.display = 'block';
+            document.getElementById('result1').innerHTML = 
+                `<strong>День недели:</strong> ${weekday}<br>
+                 <strong>Число:</strong> ${day}<br>
+                 <strong>Месяц:</strong> ${month}<br>
+                 <strong>Год:</strong> ${year}`;
+        }
+
+        // ЗАДАНИЕ 2
+        function task2() {
+            const today = new Date();
+            const currentYear = today.getFullYear();
+            const winterVacation = new Date(currentYear, 11, 25);
+            const summerVacation = new Date(currentYear + 1, 5, 1);
+
+            let vacationDate = today < winterVacation ? winterVacation : summerVacation;
+            const daysLeft = Math.ceil((vacationDate - today) / (1000 * 60 * 60 * 24));
+
+            document.getElementById('daysToVacation').value = daysLeft + ' дн.';
+        }
+
+        // ЗАДАНИЕ 3
+        function task3() {
+            const length = parseFloat(document.getElementById('length').value);
+            const width = parseFloat(document.getElementById('width').value);
+
+            if (isNaN(length) || isNaN(width) || length <= 0 || width <= 0) {
+                alert('Введите корректные значения');
+                return;
+            }
+
+            const area = length * width;
+            document.getElementById('result3').style.display = 'block';
+            document.getElementById('result3').innerHTML = 
+                `<strong>Площадь:</strong> ${area.toFixed(2)} см²`;
+        }
+
+        // ЗАДАНИЕ 4
+        function task4() {
+            const fio = document.getElementById('fio').value;
+            const gender = document.getElementById('gender').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const blood = document.getElementById('blood').value;
+            const specialty = document.getElementById('specialty').value;
+
+            if (!fio || !phone || !email || !specialty) {
+                alert('Заполните все поля');
+                return;
+            }
+
+            const bioHTML = `
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Биография</title>
+    <style>
+        body { font-family: Georgia, serif; max-width: 700px; margin: 40px auto; padding: 30px; }
+        h1 { color: #333; text-align: center; }
+        .bio { background: #f9f9f9; padding: 25px; border-radius: 8px; }
+    </style>
+</head>
+<body>
+    <h1>Биография</h1>
+    <div class="bio">
+        <p>Меня зовут <strong>${fio}</strong>. Пол: <strong>${gender}</strong>.</p>
+        <p>Телефон: <strong>${phone}</strong>. Email: <strong>${email}</strong>.</p>
+        <p>Группа крови: <strong>${blood}</strong>.</p>
+        <p>Специальность: <strong>${specialty}</strong>.</p>
+    </div>
+</body>
+</html>`;
+
+            const newWindow = window.open('', '_blank');
+            newWindow.document.write(bioHTML);
+            newWindow.document.close();
+        }
+    </script>
+
+</body>
+</html>
