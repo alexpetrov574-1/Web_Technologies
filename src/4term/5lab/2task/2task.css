@@ -1,0 +1,37 @@
+body {
+  background-color: #f5f5dc;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+  color: #2c3e50;
+}
+h1 {
+  color: #34495e;
+}
+table {
+  margin: 20px 0;
+  border-collapse: collapse;
+}
+td {
+  padding: 15px;
+  border: 1px solid #bdc3c7;
+  vertical-align: top;
+}
+.animal-name {
+  font-weight: bold;
+  cursor: pointer;
+  padding: 10px;
+  width: 200px;
+}
+.animal-name:hover {
+  background-color: #ecf0f1;
+}
+.image-cell {
+  width: 250px;
+  height: 200px;
+  text-align: center;
+}
+img {
+  max-width: 200px;
+  max-height: 180px;
+  border: 2px solid #3498db;
+}

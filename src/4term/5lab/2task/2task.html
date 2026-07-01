@@ -3,56 +3,8 @@
   <head>
     <meta charset="UTF-8" />
     <title>Животные</title>
-    <style>
-      body {
-        background-color: #f5f5dc;
-        font-family: Arial, sans-serif;
-        padding: 20px;
-        color: #2c3e50;
-      }
-      h1 {
-        color: #34495e;
-      }
-      table {
-        margin: 20px 0;
-        border-collapse: collapse;
-      }
-      td {
-        padding: 15px;
-        border: 1px solid #bdc3c7;
-        vertical-align: top;
-      }
-      .animal-name {
-        font-weight: bold;
-        cursor: pointer;
-        padding: 10px;
-        width: 200px;
-      }
-      .animal-name:hover {
-        background-color: #ecf0f1;
-      }
-      .image-cell {
-        width: 250px;
-        height: 200px;
-        text-align: center;
-      }
-      img {
-        max-width: 200px;
-        max-height: 180px;
-        border: 2px solid #3498db;
-      }
-    </style>
-    <script type="text/javascript">
-      function showImage(animalId, imgSrc) {
-        let imgCell = document.getElementById("img" + animalId);
-        if (imgSrc) {
-          imgCell.innerHTML =
-            '<img src="' + imgSrc + '" alt="' + animalId + '">';
-        } else {
-          imgCell.innerHTML = "";
-        }
-      }
-    </script>
+    <link rel="stylesheet" href="2task.css" />
+    <script type="text/javascript" src="2task.js"></script>
   </head>
   <body>
     <h1>Наведите на название животного</h1>
@@ -60,7 +12,7 @@
       <tr>
         <td
           class="animal-name"
-          onmouseover="showImage('1', 'кот.jpg')"
+          onmouseover="showImage('1', 'source/кот.jpg')"
           onmouseout="showImage('1', '')"
         >
           Кошка
@@ -70,7 +22,7 @@
       <tr>
         <td
           class="animal-name"
-          onmouseover="showImage('2', 'собака.jpg')"
+          onmouseover="showImage('2', 'source/собака.jpg')"
           onmouseout="showImage('2', '')"
         >
           Собака
@@ -80,7 +32,7 @@
       <tr>
         <td
           class="animal-name"
-          onmouseover="showImage('3', 'утка.jpg')"
+          onmouseover="showImage('3', 'source/утка.jpg')"
           onmouseout="showImage('3', '')"
         >
           Птица

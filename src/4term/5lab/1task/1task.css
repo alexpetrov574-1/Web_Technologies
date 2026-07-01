@@ -1,0 +1,57 @@
+body {
+  background-color: #90ee90;
+  font-family: Arial, sans-serif;
+  padding: 20px;
+}
+h1 {
+  color: #8b0000;
+}
+.form-group {
+  margin-bottom: 15px;
+}
+label {
+  display: inline-block;
+  width: 250px;
+  font-weight: bold;
+}
+select,
+input[type="text"] {
+  padding: 5px;
+  font-size: 14px;
+}
+input[type="text"] {
+  width: 400px;
+}
+.radio-group,
+.checkbox-group {
+  margin-left: 260px;
+  margin-bottom: 10px;
+}
+.radio-group label,
+.checkbox-group label {
+  display: inline;
+  width: auto;
+  font-weight: normal;
+  margin-right: 15px;
+}
+input[type="radio"],
+input[type="checkbox"] {
+  margin-right: 5px;
+}
+.buttons {
+  margin-left: 260px;
+  margin-top: 20px;
+}
+button,
+input[type="button"],
+input[type="reset"] {
+  padding: 8px 20px;
+  margin-right: 20px;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: bold;
+}
+.section-title {
+  font-weight: bold;
+  margin-bottom: 10px;
+}
